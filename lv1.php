@@ -27,17 +27,8 @@ class DiplomskiRadovi implements iRadovi {
     
     function save() {
         $conn = connectToDatabase();
-        $naziv = $this->naziv_rada;
-        $tekst = $this->tekst_rada;
-        $link = $this->link_rada;
-        $oib = $this->oib_tvrtke;
         $sql = "INSERT INTO `diplomski_radovi` (`naziv_rada`, `tekst_rada`, `link_rada`, `oib_tvrtke`) VALUES ('$this->naziv_rada', '$this->tekst_rada', '$this->link_rada', '$this->oib_tvrtke')";
-        if($conn->query($sql) === true) {
-            $this->read();
-        }
-        else {
-            echo "Error! " . $sql . "<br>" . $conn->error;
-        };
+        $this->read();
         $conn->close();
     }
 
